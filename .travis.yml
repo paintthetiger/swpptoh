@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.5"
+
+install:
+  - pip install django coverage coveralls
+
+before_script:
+  - python3 manage.py migrate
+
+script:
+  - coverage run --branch --source="./hero" manage.py test
+
+after_success: coveralls
